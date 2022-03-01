@@ -14,7 +14,7 @@ export class ResetPasswordComponent implements OnInit {
   arr: any;
   checkmail!: boolean;
 
-  constructor(private router: Router,private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -28,13 +28,13 @@ export class ResetPasswordComponent implements OnInit {
       return;
     }
     else {
-      this.authService.reset(f.value.email,JSON.stringify({"password" : f.value.password})).subscribe(
+      this.authService.reset(JSON.stringify({ "userEmail": f.value.email, "password": f.value.password })).subscribe(
         data => {
           console.log(data)
           this.router.navigate(['/login']);
         }
       )
     }
- }
+  }
 
 }

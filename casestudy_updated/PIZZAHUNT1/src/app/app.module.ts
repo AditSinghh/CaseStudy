@@ -30,6 +30,7 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './ind/footer/footer.component';
 import { MyprofileComponent } from './user/my-profile/my-profile.component';
+import { EditprofileComponent } from './user/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { MyprofileComponent } from './user/my-profile/my-profile.component';
     OfferComponent,
     AdminLoginComponent,
     FooterComponent,
-    MyprofileComponent
+    MyprofileComponent,
+    EditprofileComponent
   ],
   imports: [
     HttpClientModule,

@@ -11,7 +11,7 @@ import { User } from 'src/app/user';
 })
 export class MyprofileComponent implements OnInit {
   public user!: User;
-  public emailId:any;
+  public id:any;
   public myProfileUser:any;
 
   public name:any;
@@ -43,15 +43,15 @@ export class MyprofileComponent implements OnInit {
 
   getOneuser()
   {
-    this.emailId = localStorage.getItem('userid')
+    this.id = localStorage.getItem('userid')
 
-    this.authService.login(this.emailId).subscribe(
+    this.authService.Oneuser(JSON.stringify({"id":this.id})).subscribe(
       data => {
         this.myProfileUser = data
         // console.log(this.myProfileUser["userEmail"]);
-        this.name = this.myProfileUser["userName"]
-        this.email = this.myProfileUser["userEmail"]
-        this.contact = this.myProfileUser["Phone"]
+        this.name = this.myProfileUser.message["userName"]
+        this.email = this.myProfileUser.message["userEmail"]
+        this.contact = this.myProfileUser.message["phone"]
       },
       (error) => {
 

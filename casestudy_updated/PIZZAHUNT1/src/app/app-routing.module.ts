@@ -14,6 +14,7 @@ import { FamousComponent } from './ind/famous/famous.component';
 import { MainComponent } from './ind/main/main.component';
 import { CartComponent } from './user/cart/cart.component';
 import { MyprofileComponent } from './user/my-profile/my-profile.component';
+import { EditprofileComponent } from './user/edit-profile/edit-profile.component';
 
 import { UserhomeComponent } from './user/userhome/userhome.component';
 
@@ -33,6 +34,8 @@ const routes: Routes = [
   {path:"userhome",component:UserhomeComponent},
   {path:"cart",component:CartComponent},
   {path:"myProfile",component:MyprofileComponent},
+  {path:"editprofile",component:EditprofileComponent},
+
 
 ];
 
