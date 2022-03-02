@@ -44,14 +44,19 @@ export class AuthService {
   //     observe: 'body',
   //     headers: new HttpHeaders().append('Content-Type', 'application/json')
   //   });
-  reset(body: any) {
+  editprofile(body: any) {
     return this.http.put(this.loginuri + '/editprofile/', body, {
       observe: 'body',
       headers: new HttpHeaders().append('Content-Type', 'application/json')
     });
   }
 
-
+  reset(body: any) {
+    return this.http.put(this.loginuri + '/changepassword/', body, {
+      observe: 'body',
+      headers: new HttpHeaders().append('Content-Type', 'application/json')
+    });
+  }
 
   login(body: any) {
     console.log(body)

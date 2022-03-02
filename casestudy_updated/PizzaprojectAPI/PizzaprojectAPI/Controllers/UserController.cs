@@ -135,6 +135,7 @@ namespace PizzaprojectAPI.Controllers
             }
             else
             {
+                
                 var user = context.User.AsNoTracking().FirstOrDefault(x => x.id == userObj.id);
                 if (user != null)
                 {
@@ -169,6 +170,57 @@ namespace PizzaprojectAPI.Controllers
             }
 
         }
+
+        [HttpPut("changepassword")]
+
+        public IActionResult changepassword([FromBody] User userObj)
+        {
+
+
+            if (userObj == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+
+                var user = context.User.AsNoTracking().FirstOrDefault(x => x.userEmail == userObj.userEmail);
+                if (user != null)
+                {
+                    var newUserObj = new User
+                    {
+                        id = user.id,
+                        userName = userObj.userName != null ? userObj.userName : user.userName,
+                        userEmail = userObj.userEmail != null ? userObj.userEmail : user.userEmail,
+                        password = userObj.password != null ? BCrypt.Net.BCrypt.HashPassword(userObj.password) : user.password,
+                        Phone = userObj.Phone != null ? userObj.Phone : user.Phone,
+                        createdAt = DateTime.Now,
+                        updatedAt = DateTime.Now
+
+                    };
+                    context.Entry(newUserObj).State = EntityState.Modified;
+                    context.SaveChanges();
+                    return Ok(new
+                    {
+                        StatusCode = 200,
+                        Message = "User Added Successfully"
+
+                    });
+                }
+                else
+                {
+                    return Ok(new
+                    {
+                        StatusCode = 404,
+                        Message = "User not found"
+
+                    });
+                }
+            }
+
+        }
+
+
     }
 
 }
